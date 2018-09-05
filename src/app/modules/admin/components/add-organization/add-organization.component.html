@@ -1,0 +1,62 @@
+<h2 class="page-title">Add Organization</h2>
+<form name="form" (ngSubmit)="f.form.valid && addOrganization()" #f="ngForm" novalidate class="form form__add-single-user">
+  <div class="alert alert-danger" *ngIf="errorMessage != null">
+    <p>{{errorMessage}}.</p>
+  </div>
+  <div class="form-group">
+    <label for="">First Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required>
+    <span *ngIf="f.submitted && !firstName.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> First Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Last Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required>
+    <span *ngIf="f.submitted && !lastName.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Last Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Email
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required>
+    <span *ngIf="f.submitted && !email.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Email is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Password
+      <span class="required">*</span>
+    </label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+    <span *ngIf="f.submitted && !password.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Password is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Organization Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="organizationName" [(ngModel)]="user.organizationName" #organizationName="ngModel"
+      required>
+    <span *ngIf="f.submitted && !organizationName.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Organization Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Organization Phone Number
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required>
+    <span *ngIf="f.submitted && !phone.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Organization Phone Number</span>
+  </div>
+
+
+
+  <ul class="list-inline btns__list pull-right">
+    <button class="btn btn-success text-uppercase">Save</button>
+    <button [routerLink]="['/adminDashboard','pendingRequests']" class="btn btn-danger text-uppercase">Cancel</button>
+  </ul>
+</form>

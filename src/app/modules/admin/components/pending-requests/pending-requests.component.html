@@ -1,0 +1,56 @@
+<h3 class="page-subtitle">Pending Requests</h3>
+
+<!--Active Users Table-->
+<div class="table-responsive">
+  <div class="alert alert-danger" *ngIf="errorMessage != null">
+    <p>{{errorMessage}}.</p>
+  </div>
+  <div class="alert alert-success" *ngIf="successMessage != null">
+    <p>{{successMessage}}.</p>
+  </div>
+
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped media-library table-lg">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Organization Name</th>
+        <th>Email Address</th>
+        <th>Phone</th>
+        <th>Total Number Of Agents</th>
+        <th>Number Of Months</th>
+        <th>Total Cost</th>
+        <th>To Pay</th>
+        <th>Mode of Payment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <input *ngIf="user.organization.modeOfPayment" type="checkbox" name="optradio" [checked]="user.organization.checkbox" (change)="user.organization.checkbox = !user.organization.checkbox">
+          <label for="" class="radio-button__label"></label>
+        </td>
+        <td>{{user.organization.name}}
+          <span *ngIf="user.updated" class="badge badge-secondary">Updated Request</span>
+        </td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.organization.totalNumberOfAgents}}</td>
+        <td>{{user.organization.numberOfMonths}}</td>
+        <td>{{user.organization.totalCost}}</td>
+        <td>{{user.organization.toPay}}</td>
+        <td>{{user.organization.modeOfPayment}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="row">
+  <ul class="list-inline btns__list pull-right">
+    <button (click)="approveUsers()" class="btn btn-success text-uppercase">Approve</button>
+    <button (click)="rejectUsers()" class="btn btn-warning text-uppercase">Reject</button>
+    <button (click)="deleteUsers()" class="btn btn-danger text-uppercase">Delete</button>
+  </ul>
+</div>

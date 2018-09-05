@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card mt-30">
+    <h3 class="card__subheading">Payment method</h3>
+    <div class="card__body">
+      <p>S-Blox system allow you to pay with the way you want, you can choose between manual payment and credit.</p>
+      <p>So if you want to pay manual please click on the below button, else you can fill below payment details and complete
+        the request.</p>
+      <a (click)="manualPayment()" class="btn btn-secondary btn-rounded btn-lg">Manual payment</a>
+      <button *ngIf="currentUser.startDate" [routerLink]="['/owner','userList']" class="btn btn-secondary btn-rounded btn-lg btn-danger">Cancel</button>
+      <hr>
+      <p>Or you can choose credit payment using your credit card</p>
+      <a (click)="creditPayment()" class="btn btn-secondary btn-rounded btn-lg">Credit payment</a>
+    </div>
+
+  </div>
+</div>

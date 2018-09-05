@@ -1,0 +1,59 @@
+<h3 class="page-subtitle">
+  Users List</h3>
+
+<div class="alert alert-danger" *ngIf="errorMessage != null">
+  <p>{{errorMessage}}.</p>
+</div>
+<div class="alert alert-success" *ngIf="successMessage != null">
+  <p>{{successMessage}}.</p>
+</div>
+<div class="alert alert-danger" *ngIf="currentUser.paymentStatus == 'Danger'">
+  <p *ngIf="currentUser.remainingDays > 0">You subscription will expire after {{currentUser.remainingDays}} days, please make sure to renew it</p>
+  <p *ngIf="currentUser.remainingDays == 0">You subscription is expired, please make sure to renew it</p>
+</div>
+
+<!--Active Users Table-->
+<div class="table-responsive">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped media-library table-lg">
+    <thead>
+      <tr>
+        <th>Organization Name</th>
+        <th>Email Address</th>
+        <th>Core</th>
+        <th>Enterprise</th>
+        <th>Recorder</th>
+        <th>Outbound</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+
+        <td>{{user.organization.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.organization.numberOfCoreAgents}}</td>
+        <td>{{user.organization.numberOfEnterpriseAgents}}</td>
+        <td>{{user.organization.numberOfRecorderAgents}}</td>
+        <td>{{user.organization.numberOfOutboundAgents}}</td>
+        <td>
+          <a [routerLink]="['../../payment','rateplan']" [routerLinkActive]="['active']" class="sidenav__link">
+            Edit Payment
+          </a>
+          <a [routerLink]="" (click)="suspendOrganization()">
+            Cancel
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<div class="row">
+  <ul class="list-inline btns__list pull-right">
+    <button *ngIf="currentUser.role == 'ADMIN'" [routerLink]="['/adminDashboard','editOrganization']" class="btn btn-success text-uppercase">Edit Organization</button>
+    <!-- <button (click)="deleteUsers()" class="btn btn-danger text-uppercase">Delete</button> -->
+  </ul>
+</div>

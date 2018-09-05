@@ -1,0 +1,55 @@
+<!-- <div *ngIf="loading" class="my-loading">
+  <div class="dimmer"></div>
+
+  <div class="loading-bg">
+    <img src="../../../assets/img/spinner.gif" alt="" />
+  </div>
+</div> -->
+<h2 class="page-title">Edit User</h2>
+<form name="form" (ngSubmit)="f.form.valid && editUser()" #f="ngForm" novalidate class="form form__add-single-user">
+  <div class="alert alert-danger" *ngIf="errorMessage != null">
+    <p>{{errorMessage}}.</p>
+  </div>
+  <div class="form-group">
+    <label for="">First Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required>
+    <span *ngIf="f.submitted && !firstName.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> First Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Last Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required>
+    <span *ngIf="f.submitted && !lastName.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Last Name is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Email
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required>
+    <span *ngIf="f.submitted && !email.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Email is required</span>
+  </div>
+
+  <p>Status</p>
+  <ul class="list-inline">
+    <li class="radio-button with-label">
+      <input type="radio" name="optradio" [value]="true" [(ngModel)]="user.active" class="radio-button__field">
+      <label for="" class="radio-button__label"></label>
+      <span class="radio-button__text">Active</span>
+    </li>
+    <li class="radio-button with-label">
+      <input type="radio" name="optradio" [value]="false" [(ngModel)]="user.active" class="radio-button__field">
+      <label for="" class="radio-button__label"></label>
+      <span class="radio-button__text">Inactive</span>
+    </li>
+  </ul>
+
+  <ul class="list-inline btns__list pull-right">
+    <button class="btn btn-success text-uppercase">Save</button>
+  </ul>
+</form>

@@ -1,0 +1,70 @@
+<div class="container">
+  <h2 class="text-center">Place Your Order</h2>
+  <div class="card mt-30">
+    <h3 class="card__subheading">Your Account</h3>
+    <div class="card__body">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="info-label">Name</p>
+          <p class="info-value">{{currentUser.firstName}} {{currentUser.lastName}}</p>
+        </div>
+        <div class="col-md-4">
+          <p class="info-label">Email</p>
+          <p class="info-value">{{currentUser.email}}</p>
+        </div>
+        <div class="col-md-4">
+          <p class="info-label">Phone</p>
+          <p class="info-value">{{currentUser.phone}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-30">
+    <h3 class="card__subheading">Billing Address</h3>
+    <div class="card__body">
+      <form name="form" (ngSubmit)="f.form.valid && addAddress()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="">Street
+            <span class="required">*</span>
+          </label>
+          <input type="text" class="form-control" name="street" [(ngModel)]="address.address" #street="ngModel" required>
+          <span *ngIf="f.submitted && !street.valid" style="color:red;">
+            <i class="icon-cancel-circle2 position-left"></i> Address is required</span>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">City
+                <span class="required">*</span>
+              </label>
+              <input type="text" pattern="^[a-z A-Z]+$" class="form-control" name="city" [(ngModel)]="address.city" #city="ngModel" required>
+              <span *ngIf="f.submitted && !city.valid" style="color:red;">
+                <i class="icon-cancel-circle2 position-left"></i> City is required</span>
+              <span *ngIf="city.errors?.pattern" style="color:red;">
+                <i class="icon-cancel-circle2 position-left"></i> City accept characters only.</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="">Country
+              <span class="required">*</span>
+            </label>
+
+            <select class="selectpicker" name="country" [(ngModel)]="address.country">
+              <option *ngFor="let country of countries" [value]="country">
+                {{country}}
+              </option>
+            </select>
+
+
+          </div>
+        </div>
+        <ul class="list-inline pull-right mt-20">
+          <li>
+            <button class="btn btn-secondary btn-lg btn-rounded">Save</button>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>

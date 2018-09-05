@@ -1,0 +1,93 @@
+<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+  <div class="alert alert-danger" *ngIf="errorMessage != null">
+    <p>{{errorMessage}}.</p>
+  </div>
+  <div class="form-group">
+    <label for="" class="form__floated-label">First Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" pattern="^[a-z A-Z]+$" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"
+      required>
+    <div *ngIf="f.submitted && !firstName.valid" style="color:red;">First Name is required</div>
+    <div *ngIf="firstName.errors?.pattern" style="color:red;">First Name accept characters only. </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Last Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" pattern="^[a-z A-Z]+$" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
+      required>
+    <div *ngIf="f.submitted && !lastName.valid" style="color:red;">Last Name is required</div>
+    <div *ngIf="lastName.errors?.pattern" style="color:red;">Last name accept characters only. </div>
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Username
+      <span class="required">*</span>
+    </label>
+    <input type="text" pattern="^[a-z A-Z]+$" class="form-control" name="userName" [(ngModel)]="model.userName" #userName="ngModel"
+      required>
+    <div *ngIf="f.submitted && !userName.valid" style="color:red;">Username is required</div>
+    <div *ngIf="userName.errors?.pattern" style="color:red;">Username accept characters only. </div>
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Email
+      <span class="required">*</span>
+    </label>
+    <input type="text" pattern="^[\w.!#$-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" class="form-control" name="email" [(ngModel)]="model.email"
+      #email="ngModel" required>
+    <div *ngIf="f.submitted && !email.valid" style="color:red;">Email is required</div>
+    <div *ngIf="email.errors?.pattern" style="color:red;">Email not valid. </div>
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Password
+      <span class="required">*</span>
+    </label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+    <div *ngIf="f.submitted && !password.valid" style="color:red;">Password is required</div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Organization Name
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="form-control" name="organizationName" [(ngModel)]="model.organizationName" #organizationName="ngModel"
+      required>
+    <div *ngIf="f.submitted && !organizationName.valid" style="color:red;">Organization Name is required</div>
+  </div>
+
+  <div class="form-group">
+    <label for="" class="form__floated-label">Organization Phone Number
+      <span class="required">*</span>
+    </label>
+    <input type="text" pattern="^[\+]?[0-9]+$" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required>
+    <div *ngIf="f.submitted && !phone.valid" style="color:red;">Organization Phone is required</div>
+    <div *ngIf="phone.errors?.pattern" style="color:red;">Phone accept + and numbers only. </div>
+  </div>
+
+
+  <select name="timezone" class="selectpicker" [(ngModel)]="model.timeZone">
+    <option *ngFor="let x of timezones" [value]="x.value">
+      {{x.englishName}}
+    </option>
+
+  </select>
+  <div class="checkbox">
+    <input name="terms" [(ngModel)]="terms" type="checkbox">
+    <label class="terms">I agree with S-Blox terms and conditions
+      <span class="required">*</span>
+
+    </label>
+  </div>
+  <button [disabled]="loading" class="btn btn-main btn-block text-uppercase">sign up</button>
+  <div class="form__separator">
+    <hr>
+    <span class="separator__text">OR</span>
+  </div>
+  <button [routerLink]="['/auth/login']" class="btn btn-main-outline btn-block text-uppercase" id="btn-register">Login</button>
+</form>

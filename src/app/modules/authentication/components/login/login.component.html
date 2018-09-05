@@ -1,0 +1,30 @@
+<form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div class="alert alert-danger" *ngIf="errorMessage != null">
+        <p>{{errorMessage}}.</p>
+    </div>
+    <div class="alert alert-success" *ngIf="successMessage != null">
+        <p>{{successMessage}}.</p>
+    </div>
+    <div class="form-group">
+        <label for="" class="form__floated-label">Email
+            <span class="required">*</span>
+        </label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+        <div *ngIf="f.submitted && !username.valid" style="color:red;">Username is required</div>
+    </div>
+    <div class="form-group">
+        <label for="" class="form__floated-label">Password
+            <span class="required">*</span>
+        </label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+        <div *ngIf="f.submitted && !password.valid" style="color:red;">Password is required</div>
+    </div>
+
+    <button class="btn btn-main btn-block text-uppercase" id="btn-login">login</button>
+
+    <div class="form__separator">
+        <hr>
+        <span class="separator__text">OR</span>
+    </div>
+    <button [routerLink]="['/auth/register']" class="btn btn-main-outline btn-block text-uppercase" id="btn-register">sign up</button>
+</form>

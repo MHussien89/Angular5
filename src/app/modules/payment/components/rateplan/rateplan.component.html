@@ -1,0 +1,293 @@
+<div class="pricing bg-light-grey">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="table-reponsive mt-30">
+          <table class="table table-pricing">
+            <thead>
+              <tr>
+                <th>
+                  <div class="table-pricing__label-heading">Pricing
+                    <br> plans &amp; options</div>
+                  <br>
+                  <div class="table-pricing__label-heading-desc">Different features per profile</div>
+                </th>
+                <th>
+                  <div class="table-heading__strip">CC Core</div>
+                  <span class="dollar-sign">$</span>
+                  <span class="table-pricing__price">{{ratePlan.monthlyCore}}</span>
+                  <span class="table-pricing__rate">Monthly</span>
+                </th>
+                <th>
+                  <div class="table-heading__strip">CC Enterprise</div>
+                  <span class="dollar-sign">$</span>
+                  <span class="table-pricing__price">{{ratePlan.monthlyEnterprise}}</span>
+                  <span class="table-pricing__rate">Monthly</span>
+                </th>
+                <th>
+                  <div class="table-heading__strip">Recorder</div>
+                  <span class="dollar-sign">$</span>
+                  <span class="table-pricing__price">{{ratePlan.monthlyRecorder}}</span>
+                  <span class="table-pricing__rate">Monthly</span>
+                </th>
+                <th>
+                  <div class="table-heading__strip">Outbound</div>
+                  <span class="dollar-sign">$</span>
+                  <span class="table-pricing__price">{{ratePlan.monthlyOutbound}}</span>
+                  <span class="table-pricing__rate">Monthly</span>
+                </th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                <td>UC Core (PBX)</td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Automatic call distribution (ACD)</td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Reporting (Per SuperVisor)</td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Multimedia</td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Call Recorder</td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Quality Monitoring</td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Interface Voice Response (IVR)</td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Qoutbound Dialer</td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-close not-ava-icon"></i>
+                </td>
+                <td class="text-center">
+                  <i class="fa fa-check ava-icon"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <form name="form" (ngSubmit)="f.form.valid && addPayment()" #f="ngForm" novalidate>
+        <div class="col-md-3">
+          <div class="panel panel-pricing mt-30">
+            <div class="panel-heading">
+              <div class="panel-heading__strip">
+                Design Your Setup
+              </div>
+              <p class="call-heading">OR CALL</p>
+              <p class="call-number">+971 4818 90 24</p>
+              <p class="call-number">+453 9775 025</p>
+            </div>
+            <div class="panel-body">
+              <div class="alert alert-danger" *ngIf="errorMessage != null">
+                <p>{{errorMessage}}.</p>
+              </div>
+              <p>Enter the number of agents you need and calculate your monthly service fee.</p>
+              <div class="row">
+                <div class="col-md-6">Number of active CC Core agent(s)</div>
+                <div class="col-md-6">
+                  <div class="form-group form form-rounded">
+                    <input type="number" max="100" name="numberOfCoreAgents" [(ngModel)]="payment.numberOfCoreAgents"
+                      class="form-control" placeholder="1 agent (s)">
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-25">
+                <div class="col-md-6">Number of active CC Enterprise agent(s)</div>
+                <div class="col-md-6">
+                  <div class="form-group form form-rounded">
+                    <input type="number" name="numberOfEnterpriseAgents" [(ngModel)]="payment.numberOfEnterpriseAgents"
+                      class="form-control" placeholder="0 agent">
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-25">
+                <div class="col-md-6">Number of active CC Recorder agent(s)</div>
+                <div class="col-md-6">
+                  <div class="form-group form form-rounded">
+                    <input type="number" name="numberOfRecorderAgents" [(ngModel)]="payment.numberOfRecorderAgents"
+                      class="form-control" placeholder="0 agent">
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-25">
+                <div class="col-md-6">Number of active CC Outbound agent(s)</div>
+                <div class="col-md-6">
+                  <div class="form-group form form-rounded">
+                    <input type="number" name="numberOfOutboundAgents" [(ngModel)]="payment.numberOfOutboundAgents"
+                      class="form-control" placeholder="0 agent">
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-25">
+                <div class="col-md-6">
+                  Number of months
+                </div>
+                <!-- <div class="col-md-6">
+
+                  <select class="selectpicker active-users w-100 form form-rounded" name="country" [(ngModel)]="payment.numberOfMonths">
+                    <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                  </select>
+
+
+
+                </div> -->
+
+                <div class="col-md-6">
+
+                  <select class="selectpicker" name="country" [(ngModel)]="payment.numberOfMonths">
+                    <option [value]="1">Monthly</option>
+                    <option [value]="3">Quarterly</option>
+                    <option [value]="6">Semi Annually</option>
+                    <option [value]="12">Annually</option>
+                  </select>
+
+
+                </div>
+              </div>
+              <hr class="panel__separator">
+              <table style="width: 90%;" *ngIf="payment.startDate && payment.endDate" class="panel__table">
+                <!-- <tr>
+                  <td>
+                    <strong>Start Date:</strong>
+                  </td>
+                  <td class="text-right">{{payment.startDate}}</td>
+                </tr>-->
+                <tr>
+                  <td>
+                    <strong>Renewal Date:</strong>
+                  </td>
+                  <td class="text-right">{{payment.endDate}}</td>
+                </tr>
+              </table>
+              <div *ngIf="!payment.startDate && !payment.endDate">
+                <table class="table-freetrial">
+                  <tr>
+                    <td class="day-trial">30 DAY
+                      <br> TRIAL</td>
+                    <td class="big-text">FREE</td>
+                  </tr>
+                </table>
+                <button type="button" (click)="submitTrial()" class="btn btn-secondary btn-lg btn-block btn-rounded">Free Trial</button>
+                <span class="trial-block">Limited number of agents: 10 per each type</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-lg btn-block btn-rounded">Order Now</button>
+          <button type="button" (click)="calculateExtraFees()" class="btn btn-secondary btn-lg btn-block btn-rounded">Calculate</button>
+          <ul class="list-inline text-center">
+            <li>
+              <img src="../../../assets/img/visa.png" alt="">
+            </li>
+            <li>
+              <img src="../../../assets/img/master-card.png" alt="">
+            </li>
+          </ul>
+          <p class="mb-70">We accept payment online using Visa and Master Card credit/debit card in AED &amp; US dollars ( or any other agreed
+            currency by your card provider ).</p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

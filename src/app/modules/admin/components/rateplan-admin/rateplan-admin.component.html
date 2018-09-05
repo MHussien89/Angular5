@@ -1,0 +1,89 @@
+<h2 class="page-title">Control Rate Plans</h2>
+<form name="form" (ngSubmit)="f.form.valid && updateRatePlans()" #f="ngForm" novalidate class="form form__add-single-user">
+  <div class="alert alert-danger" *ngIf="errorMessage != null">
+    <p>{{errorMessage}}.</p>
+  </div>
+  <div class="alert alert-success" *ngIf="successMessage != null">
+    <p>{{successMessage}}.</p>
+  </div>
+  <div class="form-group">
+    <label for="">Monthly Core
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="monthlyCore" [(ngModel)]="ratePlan.monthlyCore" #monthlyCore="ngModel" required>
+    <span *ngIf="f.submitted && !monthlyCore.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Monthly Core is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Daily Core
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="dailyCore" [(ngModel)]="ratePlan.dailyCore" #dailyCore="ngModel" required>
+    <span *ngIf="f.submitted && !dailyCore.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Daily Core is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Monthly Enterprise
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="monthlyEnterprise" [(ngModel)]="ratePlan.monthlyEnterprise" #monthlyEnterprise="ngModel"
+      required>
+    <span *ngIf="f.submitted && !monthlyEnterprise.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Monthly Enterprise is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Daily Enterprise
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="dailyEnterprise" [(ngModel)]="ratePlan.dailyEnterprise" #dailyEnterprise="ngModel"
+      required>
+    <span *ngIf="f.submitted && !dailyEnterprise.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Daily Enterprise is required</span>
+  </div>
+  <div class="form-group">
+    <label for="">Monthly Outbound
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="monthlyOutbound" [(ngModel)]="ratePlan.monthlyOutbound" #monthlyOutbound="ngModel"
+      required>
+    <span *ngIf="f.submitted && !monthlyOutbound.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Monthly Outbound is required</span>
+  </div>
+
+  <div class="form-group">
+    <label for="">Daily Outbound
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="dailyOutbound" [(ngModel)]="ratePlan.dailyOutbound" #dailyOutbound="ngModel"
+      required>
+    <span *ngIf="f.submitted && !dailyOutbound.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Daily Outbound is required</span>
+  </div>
+
+  <div class="form-group">
+    <label for="">Monthly Recorder
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="monthlyRecorder" [(ngModel)]="ratePlan.monthlyRecorder" #monthlyRecorder="ngModel"
+      required>
+    <span *ngIf="f.submitted && !monthlyRecorder.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Monthly Recorder is required</span>
+  </div>
+
+  <div class="form-group">
+    <label for="">Daily Recorder
+      <span class="required">*</span>
+    </label>
+    <input type="number" class="form-control" name="dailyRecorder" [(ngModel)]="ratePlan.dailyRecorder" #dailyRecorder="ngModel"
+      required>
+    <span *ngIf="f.submitted && !dailyRecorder.valid" style="color:red;">
+      <i class="icon-cancel-circle2 position-left"></i> Daily Recorder is required</span>
+  </div>
+
+
+
+  <ul class="list-inline btns__list pull-right">
+    <button class="btn btn-success text-uppercase">Save</button>
+    <button [routerLink]="['/adminDashboard','pendingRequests']" class="btn btn-danger text-uppercase">Cancel</button>
+  </ul>
+</form>

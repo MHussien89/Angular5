@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to S-Blox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">S-blox Admin Panel</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#"> <i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container container-no-margin mb-30">
+        <div class="row mt-30">
+            <div class="card clearfix">
+                <h3 class="text-center">Place your Order</h3>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your Account</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Name</strong>
+                                <p>Order1</p>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Email</strong>
+                                <p>Order1@gmail.com</p>
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Phone Number</strong>
+                                <p>010033043043</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Billing Address</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="floating-form">
+                            <div class="form-group">
+                                <input type="text" name="" value="" class="form-control">
+                                <label class="form-label">
+                                    <span class="form-label-content">Street</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="" value="" class="form-control">
+                                <label class="form-label">
+                                    <span class="form-label-content">City</span>
+                                </label>
+                            </div>
+                            <h5>Country</h5>
+                            <select class="selectpicker show-tick mb-20">
+                                <option>Egypt</option>
+                                <option>England</option>
+                            </select>
+                            <button class="btn btn-lg btn-main pull-right" type="submit">Save Address</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-editable.min.js"></script>
+    <script src="./js/fullcalendar.min.js"></script>
+    <script src="./js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./js/bootstrap-select.min.js"></script>
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>

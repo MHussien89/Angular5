@@ -1,0 +1,71 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+    working_directory: ~/repo
+    branches:
+      only:
+        - master
+        - develop
+        - /release\/test/
+
+    steps:
+      - run: sudo npm install @angular/cli@1.7.0 -g  --unsafe-perm
+      - run: sudo apt-get install sshpass
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: npm install
+      - run: npm rebuild node-sass 
+
+      - run: |
+            chmod 600 ~/.ssh/id_*
+            #echo '132.148.241.20' >> ~/.ssh/known_hosts
+            if [ $CIRCLE_BRANCH = 'develop' ]; then
+              npm run build --aot --output-hashing=all
+              echo "in if develop"
+              sshpass -p ${DEV_DEPLOY_PASSWORD} ssh -o StrictHostKeyChecking=no ${DEV_DEPLOY_USER}@${DEV_SERVER} 'DIR="/var/www/CustomerCare/"
+              if [ "$(ls -A $DIR)" ]; then
+                  echo "$DIR data rmove"
+                  rm -r /var/www/CustomerCare/*
+              else
+                  echo "$DIR is Empty"
+              fi'
+              echo "sshpass start"
+              sshpass -p ${DEV_DEPLOY_PASSWORD} scp -o StrictHostKeyChecking=no -r ~/repo/dist/. ${DEV_DEPLOY_USER}@${DEV_SERVER}:/var/www/CustomerCare/.
+              echo "sshpass end"
+            fi
+
+            if [ $CIRCLE_BRANCH = 'master' ]; then
+              npm run build --aot --output-hashing=all
+              # -- --env=test --aot --output-hashing=all
+              sshpass -p ${PRD_DEPLOY_PASSWORD} ssh -o StrictHostKeyChecking=no ${PRD_DEPLOY_USER}@${PRD_SERVER} 'DIR="/home/sblox/test/"
+              if [ "$(ls -A $DIR)" ]; then
+                  echo "$DIR data rmove"
+                  rm -r /home/sblox/test/*
+              else
+                  echo "$DIR is Empty"
+              fi'
+              echo "sshpass start"
+              sshpass -p ${PRD_DEPLOY_PASSWORD} scp -o StrictHostKeyChecking=no -r ~/repo/dist/. ${PRD_DEPLOY_USER}@${PRD_SERVER}:/home/sblox/test/.
+              echo "sshpass end"
+            fi 
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}

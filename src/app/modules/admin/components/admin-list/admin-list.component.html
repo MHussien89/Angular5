@@ -1,0 +1,21 @@
+<h3 class="page-subtitle">Admin List</h3>
+
+<!--Active Users Table-->
+<div class="table-responsive">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped media-library table-lg">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

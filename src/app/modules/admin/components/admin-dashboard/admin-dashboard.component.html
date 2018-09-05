@@ -1,0 +1,187 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="../../../assets/img/icon.png" alt="">
+        <span class="navbar-brand__name">Admin Tool</span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <img src="../../../assets/img/admin.png" alt="">
+          </a>
+          <ul class="dropdown-menu">
+            <li class="user-info">
+              <h5 class="user-info__name">User Name</h5>
+              <p class="user-info__email">{{currentUser.email}}</p>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a [routerLink]="" (click)="logout()" class="link-logout">
+                <i class="fa fa-sign-out"></i> Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<!--Side nav-->
+<div id="sidenav" class="col-md-3 col-lg-2">
+  <ul class="sidenav__list">
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','newRequests']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/dashboard_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">New Requests</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','pendingRequests']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/dashboard_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Pending Requests</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','approvedRequests']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/dashboard_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Approved Requests</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','rejectedRequests']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/dashboard_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Rejected Requests</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','addOrganization']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/new_super_admin_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Add Organization</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','adminList']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/super_admin_list_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Admin List</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','addAdmin']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/new_super_admin_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Add Admin</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a [routerLink]="['/admin','editRatePlan']" [routerLinkActive]="['active']" class="sidenav__link">
+        <img src="../../../assets/img/new_super_admin_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">Edit Rate Plans</span>
+      </a>
+    </li>
+    <!-- <li class="sidenav__item">
+      <a href="#" class="sidenav__link">
+        <img src="../../../assets/img/add_users_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">add users</span>
+      </a>
+    </li>
+    <li class="sidenav__item">
+      <a href="#" class="sidenav__link">
+        <img src="../../../assets/img/add_user_blue.png" class="sidenav__icon">
+        <span class="sidenav__text">add single user</span>
+      </a>
+    </li> -->
+  </ul>
+</div>
+<!--Content-->
+<div id="content" class="col-md-9 col-lg-10">
+  <div class="page-content">
+    <h2 class="page-title">Dashboard</h2>
+
+    <!--Requests list-->
+    <ul class="list-inline requests-list">
+      <li class="requests-list__item new-requests">
+        <div class="media">
+          <div class="media-left">
+            <a [routerLink]="['/admin','newRequests']" [routerLinkActive]="['active']">
+              <img class="media__object" src="../../../assets/img/new_request.png" alt="...">
+            </a>
+          </div>
+          <div class="media__body">
+            <h4 class="media__heading">New Requests {{newRequestsNumber}}</h4>
+            <p class="media__desc">
+              <a [routerLink]="['/admin','newRequests']" [routerLinkActive]="['active']" class="media__moredetails">More details
+                <img src="../../../assets/img/more_green.png" alt="" class="media__moredetails-icon">
+              </a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="requests-list__item new-requests">
+        <div class="media">
+          <div class="media-left">
+            <a [routerLink]="['/admin','pendingRequests']" [routerLinkActive]="['active']">
+              <img class="media__object" src="../../../assets/img/new_request.png" alt="...">
+            </a>
+          </div>
+          <div class="media__body">
+            <h4 class="media__heading">Pending Requests {{pendingRequestsNumber}}</h4>
+            <p class="media__desc">
+              <a [routerLink]="['/admin','pendingRequests']" [routerLinkActive]="['active']" class="media__moredetails">More details
+                <img src="../../../assets/img/more_green.png" alt="" class="media__moredetails-icon">
+              </a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="requests-list__item approved-requests">
+        <div class="media">
+          <div class="media-left">
+            <a [routerLink]="['/admin','approvedRequests']" [routerLinkActive]="['active']">
+              <img class="media__object" src="../../../assets/img/aproved_requests.png" alt="...">
+            </a>
+          </div>
+          <div class="media__body">
+            <h4 class="media__heading">Approved Requests {{approvedRequestsNumber}}</h4>
+            <p class="media__desc">
+              <a [routerLink]="['/admin','approvedRequests']" [routerLinkActive]="['active']" class="media__moredetails">More details
+                <img src="../../../assets/img/more_blue.png" alt="" class="media__moredetails-icon">
+              </a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="requests-list__item rejected-requests">
+        <div class="media">
+          <div class="media-left">
+            <a [routerLink]="['/admin','rejectedRequests']" [routerLinkActive]="['active']">
+              <img class="media__object" src="../../../assets/img/rejected_request.png" alt="...">
+            </a>
+          </div>
+          <div class="media__body">
+            <h4 class="media__heading">Rejected Requests {{rejectedRequestsNumber}}</h4>
+            <p class="media__desc">
+              <a [routerLink]="['/admin','rejectedRequests']" [routerLinkActive]="['active']" class="media__moredetails">More details
+                <img src="../../../assets/img/more_red.png" alt="" class="media__moredetails-icon">
+              </a>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+</div>
